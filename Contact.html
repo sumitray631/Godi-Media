@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Contact – GODI MEDIA TV NEWS</title>
+  <style>
+    /* ----- CSS Variables (brand colors) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    :root {
+      --brand-orange: #ff5a00;
+      --black: #080808;
+      --white: #ffffff;
+      --light-gray: #f2f2f2;
+      --gray-border: #e0e0e0;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --radius-card: 16px;
+      --transition: 0.25s ease;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ----- Top Utility Bar ----- */
+    .top-bar {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.8rem;
+      padding: 6px 0;
+      border-bottom: 2px solid var(--brand-orange);
+    }
+
+    .top-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar .date {
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+    }
+
+    .top-bar .links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-bar .links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+
+    .top-bar .links a:hover {
+      color: var(--brand-orange);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      color: var(--white);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ----- Header ----- */
+    .header-main {
+      background: var(--white);
+      padding: 18px 0 12px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .header-main .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .logo span {
+      color: var(--brand-orange);
+    }
+
+    .slogan {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brand-orange);
+      background: var(--black);
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 0 var(--brand-orange);
+    }
+
+    .slogan::after {
+      content: "✧";
+      font-size: 1.2rem;
+      margin-left: 4px;
+      color: var(--white);
+    }
+
+    .live-tv-btn {
+      background: var(--brand-orange);
+      color: var(--white);
+      font-weight: 700;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(255, 90, 0, 0.3);
+      transition: all var(--transition);
+      cursor: default;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-tv-btn::before {
+      content: "●";
+      color: var(--white);
+      font-size: 1rem;
+      animation: pulse-dot 1.4s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    /* ----- Navigation ----- */
+    .nav-bar {
+      background: var(--black);
+      padding: 0 0;
+      border-bottom: 2px solid var(--brand-orange);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 52px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      list-style: none;
+      padding: 6px 0;
+    }
+
+    .nav-links li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .nav-links li a:hover {
+      color: var(--brand-orange);
+      border-bottom-color: var(--brand-orange);
+    }
+
+    .search-icon {
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: default;
+      padding: 4px 8px;
+      transition: color var(--transition);
+    }
+
+    .search-icon:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ===== CONTACT HERO ===== */
+    .contact-hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 50px 20px 40px;
+      border-radius: var(--radius-card);
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+      border-left: 6px solid var(--brand-orange);
+    }
+
+    .contact-hero::after {
+      content: "✉";
+      position: absolute;
+      right: 30px;
+      bottom: 10px;
+      font-size: 8rem;
+      opacity: 0.06;
+      color: var(--brand-orange);
+      pointer-events: none;
+    }
+
+    .contact-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .contact-hero h1 span {
+      color: var(--brand-orange);
+    }
+
+    .contact-hero p {
+      max-width: 680px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 12px;
+    }
+
+    /* ===== CONTACT GRID ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .contact-info h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid var(--brand-orange);
+      padding-left: 16px;
+      margin-bottom: 24px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px 18px;
+      background: var(--light-gray);
+      border-radius: var(--radius-card);
+      transition: all var(--transition);
+    }
+
+    .contact-detail:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-detail .icon {
+      font-size: 1.8rem;
+      min-width: 44px;
+      text-align: center;
+      color: var(--brand-orange);
+    }
+
+    .contact-detail h4 {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .contact-detail p {
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .contact-detail a {
+      color: var(--black);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .contact-detail a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form {
+      background: var(--white);
+      padding: 30px 28px;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-border);
+    }
+
+    .contact-form h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: var(--black);
+      border-left: 4px solid var(--brand-orange);
+      padding-left: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-border);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border var(--transition), box-shadow var(--transition);
+      background: var(--white);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.15);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: var(--brand-orange);
+      color: var(--white);
+      border: none;
+      padding: 14px 34px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: 0 4px 14px rgba(255, 90, 0, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover {
+      background: #e05000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 90, 0, 0.4);
+    }
+
+    /* ===== MAP PLACEHOLDER ===== */
+    .map-section {
+      margin: 40px 0;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-border);
+    }
+
+    .map-placeholder {
+      background: var(--light-gray);
+      padding: 50px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background-image: radial-gradient(circle at 20% 30%, #e8e8e8, #d0d0d0);
+    }
+
+    .map-placeholder .icon-map {
+      font-size: 3.2rem;
+    }
+
+    .map-placeholder p {
+      font-weight: 500;
+      color: #222;
+    }
+
+    /* ===== SOCIAL FOLLOW ===== */
+    .social-follow {
+      background: var(--black);
+      padding: 28px 20px;
+      border-radius: var(--radius-card);
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 28px 0;
+    }
+
+    .social-follow h3 {
+      color: var(--brand-orange);
+    }
+
+    .social-icons-big {
+      display: flex;
+      gap: 28px;
+    }
+
+    .social-icons-big a {
+      color: white;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons-big a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--black);
+      color: #d0d0d0;
+      padding: 40px 0 20px;
+      margin-top: 20px;
+      border-top: 4px solid var(--brand-orange);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      border-left: 4px solid var(--brand-orange);
+      padding-left: 10px;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer ul li a:hover {
+      color: var(--brand-orange);
+    }
+
+    .newsletter input {
+      padding: 10px 14px;
+      border-radius: 40px;
+      border: none;
+      width: 100%;
+      max-width: 220px;
+      background: #222;
+      color: white;
+    }
+
+    .newsletter button {
+      background: var(--brand-orange);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #2a2a2a;
+      padding-top: 20px;
+      margin-top: 28px;
+      font-size: 0.8rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-main .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slogan {
+        font-size: 0.95rem;
+        padding: 4px 14px;
+      }
+      .live-tv-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+      }
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar .container {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 8px 12px;
+      }
+      .contact-detail {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP UTILITY BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date">📆 August 9, 2026 · Saturday</span>
+      <div class="links">
+        <a href="AboutUs.html">About Us</a>
+        <a href="#" style="color: var(--brand-orange); font-weight: 600;">Contact</a>
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <div class="social-icons">
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+          <a href="#">▶️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header-main">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo">GODI <span>MEDIA</span> TV NEWS</div>
+      </div>
+      <div class="slogan">हम केवल झूठ बोलेंगे</div>
+      <div class="live-tv-btn">LIVE TV</div>
+    </div>
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav-bar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="#">India</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Entertainment</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="Epaper.html">Epaper</a></li>
+        <li><a href="#">Videos</a></li>
+      </ul>
+      <div class="search-icon">🔍</div>
+    </div>
+  </nav>
+
+  <!-- ===== CONTACT HERO ===== -->
+  <div class="container">
+    <div class="contact-hero">
+      <h1>Contact <span>GODI MEDIA</span></h1>
+      <p>Have a story tip, a complaint, or just want to say hello? We'd love to hear from you — even if we don't always tell the truth.</p>
+      <p style="font-size: 1rem; opacity: 0.7; margin-top: 6px;">We reply within 24 hours (or whenever we feel like it).</p>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT GRID ===== -->
+  <div class="container">
+    <div class="contact-grid">
+      <!-- LEFT: Contact Info -->
+      <div class="contact-info">
+        <h2>📌 Get in Touch</h2>
+
+        <div class="contact-detail">
+          <div class="icon">📍</div>
+          <div>
+            <h4>Head Office</h4>
+            <p>GODI MEDIA Bhavan, Film City,<br />Noida, Uttar Pradesh – 201301</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+919876543210">+91 98765 43210</a> (Reception)</p>
+            <p style="font-size:0.85rem; opacity:0.7;">Mon–Sat, 9 AM – 8 PM IST</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:contact@godimedia.tv">contact@godimedia.tv</a> (General)</p>
+            <p><a href="mailto:newsroom@godimedia.tv">newsroom@godimedia.tv</a> (Tips)</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="icon">🕒</div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>24/7 Newsroom · Office: 9 AM – 6 PM (IST)</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; background: var(--black); padding: 20px 24px; border-radius: var(--radius-card); color: white; border-left: 6px solid var(--brand-orange);">
+          <p style="font-weight: 600;">📢 Press & Media Inquiries</p>
+          <p style="font-size:0.95rem; opacity:0.85;">For interviews, press passes, or media collaborations, email us at <strong style="color: var(--brand-orange);">press@godimedia.tv</strong></p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="contact-form">
+        <h3>📩 Send a Message</h3>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="general">General Inquiry</option>
+              <option value="news-tip">News Tip</option>
+              <option value="complaint">Complaint / Suggestion</option>
+              <option value="interview">Interview Request</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">✉ Send Message</button>
+        </form>
+        <p style="margin-top: 16px; font-size: 0.8rem; color: #666;">* Required fields. We respect your privacy and never share your data.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAP SECTION ===== -->
+  <div class="container map-section">
+    <div class="map-placeholder">
+      <div class="icon-map">🗺️</div>
+      <p><strong>Find us at Film City, Noida</strong></p>
+      <p style="font-size:0.9rem; opacity:0.8;">📍 GODI MEDIA Bhavan, Sector 16A, Noida – 201301</p>
+      <div style="background: var(--black); color: white; padding: 8px 20px; border-radius: 40px; margin-top: 8px; font-size:0.85rem; border: 1px solid var(--brand-orange);">📍 Interactive map coming soon</div>
+    </div>
+  </div>
+
+  <!-- ===== SOCIAL FOLLOW ===== -->
+  <div class="container social-follow">
+    <h3>📣 Follow GODI MEDIA</h3>
+    <div class="social-icons-big">
+      <a href="#">📘</a>
+      <a href="#">🐦</a>
+      <a href="#">📸</a>
+      <a href="#">▶️</a>
+      <a href="#">📱</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>GODI MEDIA TV</h4>
+        <p style="max-width:220px;">हम केवल झूठ बोलेंगे – but you want the truth? Here is our address.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li><a href="Index.html">Home</a></li><li><a href="#">India</a></li><li><a href="#">Politics</a></li><li><a href="Contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul><li><a href="#">World</a></li><li><a href="#">Sports</a></li><li><a href="#">Technology</a></li><li><a href="Epaper.html">Epaper</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter your email" />
+          <br />
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 GODI MEDIA TV NEWS · All rights reserved (and some lies)
+    </div>
+  </footer>
+
+</body>
+</html>

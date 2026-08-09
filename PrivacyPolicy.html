@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Privacy Policy – GODI MEDIA TV NEWS</title>
+  <style>
+    /* ----- CSS Variables (brand colors) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    :root {
+      --brand-orange: #ff5a00;
+      --black: #080808;
+      --white: #ffffff;
+      --light-gray: #f2f2f2;
+      --gray-border: #e0e0e0;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --radius-card: 16px;
+      --transition: 0.25s ease;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ----- Top Utility Bar ----- */
+    .top-bar {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.8rem;
+      padding: 6px 0;
+      border-bottom: 2px solid var(--brand-orange);
+    }
+
+    .top-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar .date {
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+    }
+
+    .top-bar .links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-bar .links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+
+    .top-bar .links a:hover {
+      color: var(--brand-orange);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      color: var(--white);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ----- Header ----- */
+    .header-main {
+      background: var(--white);
+      padding: 18px 0 12px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .header-main .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .logo span {
+      color: var(--brand-orange);
+    }
+
+    .slogan {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brand-orange);
+      background: var(--black);
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 0 var(--brand-orange);
+    }
+
+    .slogan::after {
+      content: "✧";
+      font-size: 1.2rem;
+      margin-left: 4px;
+      color: var(--white);
+    }
+
+    .live-tv-btn {
+      background: var(--brand-orange);
+      color: var(--white);
+      font-weight: 700;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(255, 90, 0, 0.3);
+      transition: all var(--transition);
+      cursor: default;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-tv-btn::before {
+      content: "●";
+      color: var(--white);
+      font-size: 1rem;
+      animation: pulse-dot 1.4s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    /* ----- Navigation ----- */
+    .nav-bar {
+      background: var(--black);
+      padding: 0 0;
+      border-bottom: 2px solid var(--brand-orange);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 52px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      list-style: none;
+      padding: 6px 0;
+    }
+
+    .nav-links li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .nav-links li a:hover {
+      color: var(--brand-orange);
+      border-bottom-color: var(--brand-orange);
+    }
+
+    .search-icon {
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: default;
+      padding: 4px 8px;
+      transition: color var(--transition);
+    }
+
+    .search-icon:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ===== PRIVACY HERO ===== */
+    .privacy-hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 50px 20px 40px;
+      border-radius: var(--radius-card);
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+      border-left: 6px solid var(--brand-orange);
+    }
+
+    .privacy-hero::after {
+      content: "🔒";
+      position: absolute;
+      right: 30px;
+      bottom: 10px;
+      font-size: 7rem;
+      opacity: 0.06;
+      color: var(--brand-orange);
+      pointer-events: none;
+    }
+
+    .privacy-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .privacy-hero h1 span {
+      color: var(--brand-orange);
+    }
+
+    .privacy-hero p {
+      max-width: 680px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 12px;
+    }
+
+    /* ===== PRIVACY CONTENT ===== */
+    .privacy-content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 10px;
+    }
+
+    .privacy-content h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid var(--brand-orange);
+      padding-left: 16px;
+      margin: 40px 0 18px;
+    }
+
+    .privacy-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .privacy-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--black);
+    }
+
+    .privacy-content p {
+      margin-bottom: 16px;
+      color: #1e1e1e;
+    }
+
+    .privacy-content ul {
+      margin: 12px 0 20px 28px;
+      list-style: disc;
+    }
+
+    .privacy-content ul li {
+      margin-bottom: 8px;
+      color: #1e1e1e;
+    }
+
+    .privacy-highlight {
+      background: var(--light-gray);
+      padding: 20px 28px;
+      border-radius: var(--radius-card);
+      border-left: 4px solid var(--brand-orange);
+      margin: 24px 0;
+    }
+
+    .privacy-highlight strong {
+      color: var(--brand-orange);
+    }
+
+    .privacy-content .last-updated {
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: var(--radius-card);
+      margin: 30px 0 10px;
+      font-size: 0.95rem;
+      border-left: 4px solid var(--brand-orange);
+    }
+
+    .privacy-content .last-updated span {
+      color: var(--brand-orange);
+      font-weight: 700;
+    }
+
+    /* ===== SOCIAL FOLLOW ===== */
+    .social-follow {
+      background: var(--black);
+      padding: 28px 20px;
+      border-radius: var(--radius-card);
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 40px 0 20px;
+    }
+
+    .social-follow h3 {
+      color: var(--brand-orange);
+    }
+
+    .social-icons-big {
+      display: flex;
+      gap: 28px;
+    }
+
+    .social-icons-big a {
+      color: white;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons-big a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--black);
+      color: #d0d0d0;
+      padding: 40px 0 20px;
+      margin-top: 20px;
+      border-top: 4px solid var(--brand-orange);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      border-left: 4px solid var(--brand-orange);
+      padding-left: 10px;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer ul li a:hover {
+      color: var(--brand-orange);
+    }
+
+    .newsletter input {
+      padding: 10px 14px;
+      border-radius: 40px;
+      border: none;
+      width: 100%;
+      max-width: 220px;
+      background: #222;
+      color: white;
+    }
+
+    .newsletter button {
+      background: var(--brand-orange);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #2a2a2a;
+      padding-top: 20px;
+      margin-top: 28px;
+      font-size: 0.8rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .header-main .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slogan {
+        font-size: 0.95rem;
+        padding: 4px 14px;
+      }
+      .live-tv-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+      }
+      .privacy-hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar .container {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 8px 12px;
+      }
+      .privacy-content ul {
+        margin-left: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP UTILITY BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date">📆 August 9, 2026 · Saturday</span>
+      <div class="links">
+        <a href="AboutUs.html">About Us</a>
+        <a href="Contact.html">Contact</a>
+        <a href="#" style="color: var(--brand-orange); font-weight: 600;">Privacy Policy</a>
+        <div class="social-icons">
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+          <a href="#">▶️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header-main">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo">GODI <span>MEDIA</span> TV NEWS</div>
+      </div>
+      <div class="slogan">हम केवल झूठ बोलेंगे</div>
+      <div class="live-tv-btn">LIVE TV</div>
+    </div>
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav-bar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="#">India</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Entertainment</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Lifestyle</a></li>
+        <li><a href="#">Videos</a></li>
+      </ul>
+      <div class="search-icon">🔍</div>
+    </div>
+  </nav>
+
+  <!-- ===== PRIVACY HERO ===== -->
+  <div class="container">
+    <div class="privacy-hero">
+      <h1>Privacy <span>Policy</span></h1>
+      <p>GODI MEDIA TV NEWS is committed to protecting your privacy — even if we're not always committed to the truth. Here's how we handle your data.</p>
+    </div>
+  </div>
+
+  <!-- ===== PRIVACY CONTENT ===== -->
+  <div class="container privacy-content">
+
+    <div class="last-updated">
+      📅 <span>Last Updated:</span> August 9, 2026
+    </div>
+
+    <h2>1. Introduction</h2>
+    <p>Welcome to GODI MEDIA TV NEWS ("we," "our," "us"). We respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <strong>godimedia.tv</strong> (the "Site").</p>
+    <p>Please read this policy carefully. By using our Site, you agree to the collection and use of information in accordance with this policy. If you do not agree, please do not use our Site.</p>
+
+    <div class="privacy-highlight">
+      <strong>🔐 Our Promise:</strong> We will never sell your personal data to third parties. We may, however, use it to send you sensational news alerts, exclusive offers, and the occasional fictional story.
+    </div>
+
+    <h2>2. Information We Collect</h2>
+    <p>We collect information to provide better services to all our users. The types of information we collect include:</p>
+    <ul>
+      <li><strong>Personal Data:</strong> Name, email address, phone number, and any other information you voluntarily provide when you subscribe, contact us, or fill out forms.</li>
+      <li><strong>Usage Data:</strong> IP address, browser type, pages visited, time and date of visits, and other diagnostic data.</li>
+      <li><strong>Cookies:</strong> We use cookies and similar tracking technologies to track activity on our Site and hold certain information.</li>
+    </ul>
+
+    <h2>3. How We Use Your Information</h2>
+    <p>GODI MEDIA uses the collected data for various purposes:</p>
+    <ul>
+      <li>To provide and maintain our news services</li>
+      <li>To notify you about changes to our services</li>
+      <li>To allow you to participate in interactive features</li>
+      <li>To provide customer support</li>
+      <li>To gather analysis or valuable information so we can improve our Site</li>
+      <li>To monitor the usage of our Site</li>
+      <li>To detect, prevent, and address technical issues</li>
+      <li>To send you newsletters, marketing, and promotional materials (you can opt-out anytime)</li>
+    </ul>
+
+    <h2>4. Data Sharing & Disclosure</h2>
+    <p>We do not sell, trade, or rent your personal information to third parties. However, we may share your data in the following cases:</p>
+    <ul>
+      <li><strong>Service Providers:</strong> We may employ third-party companies to facilitate our service (e.g., hosting, email delivery). They have access to your personal data only to perform specific tasks and are obligated not to disclose or use it for other purposes.</li>
+      <li><strong>Legal Requirements:</strong> We may disclose your information if required by law or in response to valid requests by public authorities.</li>
+      <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or asset sale, your personal data may be transferred.</li>
+    </ul>
+
+    <div class="privacy-highlight">
+      <strong>📢 Note:</strong> While we may bend the truth in our news stories, we take your data privacy seriously. Your trust matters to us — even if our headlines don't.
+    </div>
+
+    <h2>5. Data Security</h2>
+    <p>The security of your data is important to us. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+    <h2>6. Your Rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Rectification:</strong> Request correction of any inaccurate or incomplete data.</li>
+      <li><strong>Erasure:</strong> Request deletion of your personal data under certain conditions.</li>
+      <li><strong>Object:</strong> Object to the processing of your data for marketing purposes.</li>
+    </ul>
+    <p>To exercise these rights, please <a href="#" style="color: var(--brand-orange); font-weight: 600;">contact us</a>.</p>
+
+    <h2>7. Cookies & Tracking</h2>
+    <p>We use cookies to enhance your experience on our Site. Cookies are small files stored on your device that help us remember your preferences and understand how you interact with our content. You can control cookie preferences through your browser settings.</p>
+
+    <h2>8. Third-Party Links</h2>
+    <p>Our Site may contain links to third-party websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites. We encourage you to review the privacy policies of those sites.</p>
+
+    <h2>9. Children's Privacy</h2>
+    <p>Our Site is not intended for children under the age of 13. We do not knowingly collect personally identifiable information from children. If you are a parent or guardian and you believe your child has provided us with personal data, please contact us.</p>
+
+    <h2>10. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date. We encourage you to review this policy periodically.</p>
+
+    <div class="last-updated">
+      📅 <span>Last Updated:</span> August 9, 2026
+    </div>
+
+    <h2>11. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:privacy@godimedia.tv" style="color: var(--brand-orange);">privacy@godimedia.tv</a></li>
+      <li><strong>Phone:</strong> +91 98765 43210</li>
+      <li><strong>Address:</strong> GODI MEDIA Bhavan, Film City, Noida, Uttar Pradesh – 201301</li>
+    </ul>
+
+  </div>
+
+  <!-- ===== SOCIAL FOLLOW ===== -->
+  <div class="container social-follow">
+    <h3>📣 Follow GODI MEDIA</h3>
+    <div class="social-icons-big">
+      <a href="#">📘</a>
+      <a href="#">🐦</a>
+      <a href="#">📸</a>
+      <a href="#">▶️</a>
+      <a href="#">📱</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>GODI MEDIA TV</h4>
+        <p style="max-width:220px;">हम केवल झूठ बोलेंगे – but you want the truth? Here is our address.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li><a href="Index.html">Home</a></li><li><a href="#">India</a></li><li><a href="#">Politics</a></li><li><a href="Contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul><li><a href="#">World</a></li><li><a href="#">Sports</a></li><li><a href="#">Technology</a></li><li><a href="Epaper.html">Epaper</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter your email" />
+          <br />
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 GODI MEDIA TV NEWS · All rights reserved (and some lies)
+    </div>
+  </footer>
+
+</body>
+</html>

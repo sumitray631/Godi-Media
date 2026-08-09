@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Epaper – GODI MEDIA TV NEWS</title>
+    <style>
+        /* ----- CSS Variables (brand colors) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --brand-orange: #ff5a00;
+            --black: #080808;
+            --white: #ffffff;
+            --light-gray: #f2f2f2;
+            --gray-border: #e0e0e0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --radius-card: 16px;
+            --transition: 0.25s ease;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ----- Top Utility Bar ----- */
+        .top-bar {
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.8rem;
+            padding: 6px 0;
+            border-bottom: 2px solid var(--brand-orange);
+        }
+
+        .top-bar .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-bar .date {
+            opacity: 0.8;
+            letter-spacing: 0.3px;
+        }
+
+        .top-bar .links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar .links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color var(--transition);
+        }
+
+        .top-bar .links a:hover {
+            color: var(--brand-orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--brand-orange);
+        }
+
+        /* ----- Header ----- */
+        .header-main {
+            background: var(--white);
+            padding: 18px 0 12px;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .header-main .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--black);
+        }
+
+        .logo span {
+            color: var(--brand-orange);
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brand-orange);
+            background: var(--black);
+            padding: 6px 18px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 0 var(--brand-orange);
+        }
+
+        .slogan::after {
+            content: "✧";
+            font-size: 1.2rem;
+            margin-left: 4px;
+            color: var(--white);
+        }
+
+        .live-tv-btn {
+            background: var(--brand-orange);
+            color: var(--white);
+            font-weight: 700;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(255, 90, 0, 0.3);
+            transition: all var(--transition);
+            cursor: default;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .live-tv-btn::before {
+            content: "●";
+            color: var(--white);
+            font-size: 1rem;
+            animation: pulse-dot 1.4s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { opacity: 1; }
+            50% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        /* ----- Navigation ----- */
+        .nav-bar {
+            background: var(--black);
+            padding: 0 0;
+            border-bottom: 2px solid var(--brand-orange);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-bar .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 52px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            list-style: none;
+            padding: 6px 0;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: all var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--brand-orange);
+            border-bottom-color: var(--brand-orange);
+        }
+
+        .search-icon {
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: default;
+            padding: 4px 8px;
+            transition: color var(--transition);
+        }
+
+        .search-icon:hover {
+            color: var(--brand-orange);
+        }
+
+        /* ===== EPAPER HERO ===== */
+        .epaper-hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 20px 35px;
+            border-radius: var(--radius-card);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid var(--brand-orange);
+        }
+
+        .epaper-hero::after {
+            content: "📰";
+            position: absolute;
+            right: 30px;
+            bottom: 10px;
+            font-size: 8rem;
+            opacity: 0.06;
+            color: var(--brand-orange);
+            pointer-events: none;
+        }
+
+        .epaper-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .epaper-hero h1 span {
+            color: var(--brand-orange);
+        }
+
+        .epaper-hero p {
+            max-width: 680px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 12px;
+        }
+
+        /* ===== EPAPER TOOLBAR ===== */
+        .epaper-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--light-gray);
+            padding: 14px 20px;
+            border-radius: var(--radius-card);
+            margin-bottom: 28px;
+            gap: 14px;
+            border: 1px solid var(--gray-border);
+        }
+
+        .epaper-toolbar .date-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .epaper-toolbar .date-selector label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .epaper-toolbar .date-selector input[type="date"] {
+            padding: 8px 14px;
+            border-radius: 40px;
+            border: 1px solid var(--gray-border);
+            background: var(--white);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: border var(--transition);
+        }
+
+        .epaper-toolbar .date-selector input[type="date"]:focus {
+            outline: none;
+            border-color: var(--brand-orange);
+        }
+
+        .epaper-toolbar .action-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .epaper-toolbar .action-buttons button {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .epaper-toolbar .action-buttons button:hover {
+            background: var(--brand-orange);
+            color: var(--white);
+            border-color: var(--brand-orange);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .epaper-toolbar .action-buttons .pdf-btn {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .epaper-toolbar .action-buttons .pdf-btn:hover {
+            background: var(--brand-orange);
+            border-color: var(--brand-orange);
+        }
+
+        /* ===== EPAPER GRID (NEWSPAPER PAGES) ===== */
+        .epaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .epaper-page {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            border: 1px solid var(--gray-border);
+        }
+
+        .epaper-page:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .epaper-page .page-thumb {
+            background: #eaeaea;
+            height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: linear-gradient(145deg, #f0f0f0, #d4d4d4);
+            border-bottom: 2px solid var(--brand-orange);
+            overflow: hidden;
+        }
+
+        .epaper-page .page-thumb .newspaper-mock {
+            width: 85%;
+            height: 85%;
+            background: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.6rem;
+            line-height: 1.4;
+            transition: transform var(--transition);
+        }
+
+        .epaper-page:hover .newspaper-mock {
+            transform: scale(1.02);
+        }
+
+        .newspaper-mock .mock-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .newspaper-mock .mock-header .mock-logo {
+            color: var(--brand-orange);
+        }
+
+        .newspaper-mock .mock-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 4px 0;
+            line-height: 1.1;
+        }
+
+        .newspaper-mock .mock-title span {
+            color: var(--brand-orange);
+        }
+
+        .newspaper-mock .mock-body {
+            display: flex;
+            gap: 6px;
+            flex: 1;
+            margin-top: 4px;
+        }
+
+        .newspaper-mock .mock-body .col {
+            flex: 1;
+            background: #f5f5f5;
+            border-radius: 2px;
+            padding: 4px;
+            font-size: 0.5rem;
+        }
+
+        .newspaper-mock .mock-body .col .line {
+            height: 6px;
+            background: #ddd;
+            margin: 3px 0;
+            border-radius: 2px;
+        }
+
+        .newspaper-mock .mock-body .col .line.short {
+            width: 60%;
+        }
+        .newspaper-mock .mock-body .col .line.med {
+            width: 80%;
+        }
+
+        .epaper-page .page-info {
+            padding: 16px 18px 18px;
+        }
+
+        .epaper-page .page-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .epaper-page .page-info .page-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .epaper-page .page-info .page-meta .page-number {
+            background: var(--black);
+            color: var(--white);
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        .epaper-page .page-info .read-btn {
+            display: inline-block;
+            margin-top: 12px;
+            background: var(--brand-orange);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all var(--transition);
+        }
+
+        .epaper-page .page-info .read-btn:hover {
+            background: #e05000;
+            transform: translateX(4px);
+        }
+
+        /* ===== EPAPER FEATURES ===== */
+        .epaper-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 24px 20px;
+            border-radius: var(--radius-card);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--brand-orange);
+            transition: all var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-card h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #444;
+            margin-top: 4px;
+        }
+
+        /* ===== SOCIAL FOLLOW ===== */
+        .social-follow {
+            background: var(--black);
+            padding: 28px 20px;
+            border-radius: var(--radius-card);
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0 20px;
+        }
+
+        .social-follow h3 {
+            color: var(--brand-orange);
+        }
+
+        .social-icons-big {
+            display: flex;
+            gap: 28px;
+        }
+
+        .social-icons-big a {
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .social-icons-big a:hover {
+            color: var(--brand-orange);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--black);
+            color: #d0d0d0;
+            padding: 40px 0 20px;
+            margin-top: 20px;
+            border-top: 4px solid var(--brand-orange);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h4 {
+            color: var(--white);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            border-left: 4px solid var(--brand-orange);
+            padding-left: 10px;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer ul li a:hover {
+            color: var(--brand-orange);
+        }
+
+        .newsletter input {
+            padding: 10px 14px;
+            border-radius: 40px;
+            border: none;
+            width: 100%;
+            max-width: 220px;
+            background: #222;
+            color: white;
+        }
+
+        .newsletter button {
+            background: var(--brand-orange);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: white;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2a2a2a;
+            padding-top: 20px;
+            margin-top: 28px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .header-main .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .slogan {
+                font-size: 0.95rem;
+                padding: 4px 14px;
+            }
+            .live-tv-btn {
+                padding: 6px 16px;
+                font-size: 0.8rem;
+            }
+            .epaper-hero h1 {
+                font-size: 2rem;
+            }
+            .epaper-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .epaper-toolbar .date-selector {
+                justify-content: center;
+            }
+            .epaper-toolbar .action-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar .container {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 8px 12px;
+            }
+            .epaper-grid {
+                grid-template-columns: 1fr;
+            }
+            .epaper-page .page-thumb {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOP UTILITY BAR ===== -->
+    <div class="top-bar">
+        <div class="container">
+            <span class="date">📆 August 9, 2026 · Saturday</span>
+            <div class="links">
+                <a href="AboutUs.html">About Us</a>
+                <a href="Contact.html">Contact</a>
+                <a href="PrivacyPolicy.html">Privacy Policy</a>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📸</a>
+                    <a href="#">▶️</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-main">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo">GODI <span>MEDIA</span> TV NEWS</div>
+            </div>
+            <div class="slogan">हम केवल झूठ बोलेंगे</div>
+            <div class="live-tv-btn">LIVE TV</div>
+        </div>
+    </header>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav-bar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="#">India</a></li>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">World</a></li>
+                <li><a href="#">Entertainment</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="Epaper.html">Epaper</a></li>
+                <li><a href="#">Videos</a></li>
+            </ul>
+            <div class="search-icon">🔍</div>
+        </div>
+    </nav>
+
+    <!-- ===== EPAPER HERO ===== -->
+    <div class="container">
+        <div class="epaper-hero">
+            <h1>📰 <span>Epaper</span> – GODI MEDIA Paper</h1>
+            <p>Flip through the digital edition of GODI MEDIA. Read today's headlines, exclusive stories, and more — all in the classic newspaper format.</p>
+        </div>
+    </div>
+
+    <!-- ===== EPAPER TOOLBAR ===== -->
+    <div class="container">
+        <div class="epaper-toolbar">
+            <div class="date-selector">
+                <label for="epaper-date">📅 Select Date:</label>
+                <input type="date" id="epaper-date" value="2026-08-09" />
+            </div>
+            <div class="action-buttons">
+                <button>⬅ Previous</button>
+                <button>Next ➡</button>
+                <button class="pdf-btn">📄 Download PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EPAPER GRID ===== -->
+    <div class="container epaper-grid">
+
+        <!-- Page 1 -->
+        <div class="epaper-page">
+            <div class="page-thumb">
+                <div class="newspaper-mock">
+                    <div class="mock-header">
+                        <span class="mock-logo">GODI MEDIA</span>
+                        <span>₹ 5.00</span>
+                    </div>
+                    <div class="mock-title"><span>GODI</span> MEDIA</div>
+                    <div style="font-size:0.5rem; color:#666; border-bottom:1px solid #ccc; padding-bottom:2px;">Saturday, August 9, 2026 · New Delhi</div>
+                    <div class="mock-body">
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">HEADLINE</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line short"></div>
+                            <div style="font-weight:700; font-size:0.6rem; margin-top:4px;">POLITICS</div>
+                            <div class="line"></div>
+                            <div class="line short"></div>
+                        </div>
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">WORLD</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line"></div>
+                            <div style="font-weight:700; font-size:0.6rem; margin-top:4px;">SPORTS</div>
+                            <div class="line"></div>
+                            <div class="line short"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-info">
+                <h4>Front Page – National</h4>
+                <div class="page-meta">
+                    <span>📆 August 9, 2026</span>
+                    <span class="page-number">Page 1</span>
+                </div>
+                <a href="#" class="read-btn">📖 Read Full Page</a>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="epaper-page">
+            <div class="page-thumb">
+                <div class="newspaper-mock">
+                    <div class="mock-header">
+                        <span class="mock-logo">GODI MEDIA</span>
+                        <span>₹ 5.00</span>
+                    </div>
+                    <div class="mock-title">🇮🇳 <span>India</span> Today</div>
+                    <div style="font-size:0.5rem; color:#666; border-bottom:1px solid #ccc; padding-bottom:2px;">Saturday, August 9, 2026</div>
+                    <div class="mock-body">
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">POLITICS</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line"></div>
+                            <div style="font-weight:700; font-size:0.6rem; margin-top:4px;">ECONOMY</div>
+                            <div class="line short"></div>
+                        </div>
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">OPINION</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line short"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-info">
+                <h4>Nation & Politics</h4>
+                <div class="page-meta">
+                    <span>📆 August 9, 2026</span>
+                    <span class="page-number">Page 2</span>
+                </div>
+                <a href="#" class="read-btn">📖 Read Full Page</a>
+            </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="epaper-page">
+            <div class="page-thumb">
+                <div class="newspaper-mock">
+                    <div class="mock-header">
+                        <span class="mock-logo">GODI MEDIA</span>
+                        <span>₹ 5.00</span>
+                    </div>
+                    <div class="mock-title">🌍 <span>World</span> Affairs</div>
+                    <div style="font-size:0.5rem; color:#666; border-bottom:1px solid #ccc; padding-bottom:2px;">Saturday, August 9, 2026</div>
+                    <div class="mock-body">
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">GLOBAL</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">DIPLOMACY</div>
+                            <div class="line"></div>
+                            <div class="line short"></div>
+                            <div class="line med"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-info">
+                <h4>International News</h4>
+                <div class="page-meta">
+                    <span>📆 August 9, 2026</span>
+                    <span class="page-number">Page 3</span>
+                </div>
+                <a href="#" class="read-btn">📖 Read Full Page</a>
+            </div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="epaper-page">
+            <div class="page-thumb">
+                <div class="newspaper-mock">
+                    <div class="mock-header">
+                        <span class="mock-logo">GODI MEDIA</span>
+                        <span>₹ 5.00</span>
+                    </div>
+                    <div class="mock-title">🏏 <span>Sports</span> Extra</div>
+                    <div style="font-size:0.5rem; color:#666; border-bottom:1px solid #ccc; padding-bottom:2px;">Saturday, August 9, 2026</div>
+                    <div class="mock-body">
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">CRICKET</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">FOOTBALL</div>
+                            <div class="line"></div>
+                            <div class="line short"></div>
+                            <div class="line med"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-info">
+                <h4>Sports & Entertainment</h4>
+                <div class="page-meta">
+                    <span>📆 August 9, 2026</span>
+                    <span class="page-number">Page 4</span>
+                </div>
+                <a href="#" class="read-btn">📖 Read Full Page</a>
+            </div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="epaper-page">
+            <div class="page-thumb">
+                <div class="newspaper-mock">
+                    <div class="mock-header">
+                        <span class="mock-logo">GODI MEDIA</span>
+                        <span>₹ 5.00</span>
+                    </div>
+                    <div class="mock-title">🎬 <span>Entertainment</span></div>
+                    <div style="font-size:0.5rem; color:#666; border-bottom:1px solid #ccc; padding-bottom:2px;">Saturday, August 9, 2026</div>
+                    <div class="mock-body">
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">BOLLYWOOD</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line short"></div>
+                        </div>
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">WEB SERIES</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-info">
+                <h4>Bollywood & Lifestyle</h4>
+                <div class="page-meta">
+                    <span>📆 August 9, 2026</span>
+                    <span class="page-number">Page 5</span>
+                </div>
+                <a href="#" class="read-btn">📖 Read Full Page</a>
+            </div>
+        </div>
+
+        <!-- Page 6 -->
+        <div class="epaper-page">
+            <div class="page-thumb">
+                <div class="newspaper-mock">
+                    <div class="mock-header">
+                        <span class="mock-logo">GODI MEDIA</span>
+                        <span>₹ 5.00</span>
+                    </div>
+                    <div class="mock-title">📊 <span>Business</span> Today</div>
+                    <div style="font-size:0.5rem; color:#666; border-bottom:1px solid #ccc; padding-bottom:2px;">Saturday, August 9, 2026</div>
+                    <div class="mock-body">
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">MARKETS</div>
+                            <div class="line"></div>
+                            <div class="line med"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="col">
+                            <div style="font-weight:700; font-size:0.6rem;">STARTUPS</div>
+                            <div class="line"></div>
+                            <div class="line short"></div>
+                            <div class="line med"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-info">
+                <h4>Business & Economy</h4>
+                <div class="page-meta">
+                    <span>📆 August 9, 2026</span>
+                    <span class="page-number">Page 6</span>
+                </div>
+                <a href="#" class="read-btn">📖 Read Full Page</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== EPAPER FEATURES ===== -->
+    <div class="container epaper-features">
+        <div class="feature-card">
+            <div class="icon">📱</div>
+            <h4>Mobile Friendly</h4>
+            <p>Read the paper on your phone, tablet, or desktop.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📄</div>
+            <h4>Download PDF</h4>
+            <p>Save any edition as a PDF for offline reading.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔍</div>
+            <h4>Search Archive</h4>
+            <p>Find old editions and articles from our archive.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📤</div>
+            <h4>Share Pages</h4>
+            <p>Share articles and pages with friends and family.</p>
+        </div>
+    </div>
+
+    <!-- ===== SOCIAL FOLLOW ===== -->
+    <div class="container social-follow">
+        <h3>📣 Follow GODI MEDIA</h3>
+        <div class="social-icons-big">
+            <a href="#">📘</a>
+            <a href="#">🐦</a>
+            <a href="#">📸</a>
+            <a href="#">▶️</a>
+            <a href="#">📱</a>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>GODI MEDIA TV</h4>
+                <p style="max-width:220px;">हम केवल झूठ बोलेंगे – but you want the truth? Here is our address.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul><li><a href="Index.html">Home</a></li><li><a href="#">India</a></li><li><a href="#">Politics</a></li><li><a href="Contact.html">Contact</a></li></ul>
+            </div>
+            <div>
+                <h4>Categories</h4>
+                <ul><li><a href="#">World</a></li><li><a href="#">Sports</a></li><li><a href="#">Technology</a></li><li><a href="Epaper.html">Epaper</a></li></ul>
+            </div>
+            <div>
+                <h4>Newsletter</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter your email" />
+                    <br />
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; 2026 GODI MEDIA TV NEWS · All rights reserved (and some lies)
+        </div>
+    </footer>
+
+</body>
+</html>

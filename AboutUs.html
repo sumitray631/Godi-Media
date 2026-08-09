@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>About Us – GODI MEDIA TV NEWS</title>
+  <style>
+    /* ----- CSS Variables (brand colors) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    :root {
+      --brand-orange: #ff5a00;
+      --black: #080808;
+      --white: #ffffff;
+      --light-gray: #f2f2f2;
+      --gray-border: #e0e0e0;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --radius-card: 16px;
+      --transition: 0.25s ease;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ----- Top Utility Bar ----- */
+    .top-bar {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.8rem;
+      padding: 6px 0;
+      border-bottom: 2px solid var(--brand-orange);
+    }
+
+    .top-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar .date {
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+    }
+
+    .top-bar .links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-bar .links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+
+    .top-bar .links a:hover {
+      color: var(--brand-orange);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      color: var(--white);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ----- Header ----- */
+    .header-main {
+      background: var(--white);
+      padding: 18px 0 12px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .header-main .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .logo span {
+      color: var(--brand-orange);
+    }
+
+    .slogan {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brand-orange);
+      background: var(--black);
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 0 var(--brand-orange);
+    }
+
+    .slogan::after {
+      content: "✧";
+      font-size: 1.2rem;
+      margin-left: 4px;
+      color: var(--white);
+    }
+
+    .live-tv-btn {
+      background: var(--brand-orange);
+      color: var(--white);
+      font-weight: 700;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(255, 90, 0, 0.3);
+      transition: all var(--transition);
+      cursor: default;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-tv-btn::before {
+      content: "●";
+      color: var(--white);
+      font-size: 1rem;
+      animation: pulse-dot 1.4s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    /* ----- Navigation ----- */
+    .nav-bar {
+      background: var(--black);
+      padding: 0 0;
+      border-bottom: 2px solid var(--brand-orange);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 52px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      list-style: none;
+      padding: 6px 0;
+    }
+
+    .nav-links li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .nav-links li a:hover {
+      color: var(--brand-orange);
+      border-bottom-color: var(--brand-orange);
+    }
+
+    .search-icon {
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: default;
+      padding: 4px 8px;
+      transition: color var(--transition);
+    }
+
+    .search-icon:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ===== ABOUT US HERO ===== */
+    .about-hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 50px 20px 40px;
+      border-radius: var(--radius-card);
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+      border-left: 6px solid var(--brand-orange);
+    }
+
+    .about-hero::after {
+      content: "✧";
+      position: absolute;
+      right: 30px;
+      bottom: 10px;
+      font-size: 10rem;
+      opacity: 0.06;
+      color: var(--brand-orange);
+      pointer-events: none;
+    }
+
+    .about-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .about-hero h1 span {
+      color: var(--brand-orange);
+    }
+
+    .about-hero p {
+      max-width: 680px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 12px;
+    }
+
+    /* ----- About Content Grid ----- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .about-text h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid var(--brand-orange);
+      padding-left: 16px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+      color: #1e1e1e;
+    }
+
+    .about-text .highlight {
+      background: var(--light-gray);
+      padding: 20px 24px;
+      border-radius: var(--radius-card);
+      border-left: 4px solid var(--brand-orange);
+      margin: 24px 0;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 24px 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border-top: 4px solid var(--brand-orange);
+      transition: all var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .stat-card .number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--brand-orange);
+    }
+
+    .stat-card .label {
+      font-size: 0.9rem;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* ----- Team Section ----- */
+    .team-section {
+      margin: 48px 0;
+    }
+
+    .team-section h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid var(--brand-orange);
+      padding-left: 16px;
+      margin-bottom: 28px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 24px 16px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      border-bottom: 3px solid var(--brand-orange);
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .team-card .avatar {
+      width: 80px;
+      height: 80px;
+      background: var(--light-gray);
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
+      color: var(--black);
+    }
+
+    .team-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .team-card .role {
+      color: var(--brand-orange);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    /* ----- Values ----- */
+    .values-section {
+      background: var(--light-gray);
+      border-radius: var(--radius-card);
+      padding: 40px 30px;
+      margin: 40px 0;
+    }
+
+    .values-section h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid var(--brand-orange);
+      padding-left: 16px;
+      margin-bottom: 28px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+
+    .value-item {
+      background: var(--white);
+      padding: 20px;
+      border-radius: var(--radius-card);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+
+    .value-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .value-item .icon {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+
+    .value-item h4 {
+      font-weight: 700;
+    }
+
+    /* ----- Footer ----- */
+    .footer {
+      background: var(--black);
+      color: #d0d0d0;
+      padding: 40px 0 20px;
+      margin-top: 40px;
+      border-top: 4px solid var(--brand-orange);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      border-left: 4px solid var(--brand-orange);
+      padding-left: 10px;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer ul li a:hover {
+      color: var(--brand-orange);
+    }
+
+    .newsletter input {
+      padding: 10px 14px;
+      border-radius: 40px;
+      border: none;
+      width: 100%;
+      max-width: 220px;
+      background: #222;
+      color: white;
+    }
+
+    .newsletter button {
+      background: var(--brand-orange);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #2a2a2a;
+      padding-top: 20px;
+      margin-top: 28px;
+      font-size: 0.8rem;
+    }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-main .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slogan {
+        font-size: 0.95rem;
+        padding: 4px 14px;
+      }
+      .live-tv-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+      }
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar .container {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 8px 12px;
+      }
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP UTILITY BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date">📆 August 9, 2026 · Saturday</span>
+      <div class="links">
+        <a href="#" style="color: var(--brand-orange); font-weight: 600;">About Us</a>
+        <a href="Contact.html">Contact</a>
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <div class="social-icons">
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+          <a href="#">▶️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header-main">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo">GODI <span>MEDIA</span> TV NEWS</div>
+      </div>
+      <div class="slogan">हम केवल झूठ बोलेंगे</div>
+      <div class="live-tv-btn">LIVE TV</div>
+    </div>
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav-bar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="#">India</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Entertainment</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="Epaper.html">Epaper</a></li>
+        <li><a href="#">Videos</a></li>
+      </ul>
+      <div class="search-icon">🔍</div>
+    </div>
+  </nav>
+
+  <!-- ===== ABOUT US HERO ===== -->
+  <div class="container">
+    <div class="about-hero">
+      <h1>About <span>GODI MEDIA</span> TV NEWS</h1>
+      <p>We are India's most fearless (and sometimes fearless-ly fictional) news network. Our motto: <strong style="color: var(--brand-orange);">"हम केवल झूठ बोलेंगे"</strong> — because the truth is overrated.</p>
+      <p style="font-size: 1rem; opacity: 0.7; margin-top: 6px;">— Established 2026, headquartered in New Delhi.</p>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT CONTENT ===== -->
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Who We Are</h2>
+        <p><strong>GODI MEDIA TV NEWS</strong> is a bold, unapologetic news platform that delivers stories with a twist. We blend journalism with entertainment, and sometimes we bend the facts — but always with a wink.</p>
+        <p>Our team of dedicated reporters, anchors, and digital storytellers work 24/7 to bring you the most <em>interesting</em> version of the news. Whether it's politics, sports, or Bollywood gossip, we cover it all with a distinctive orange-and-black flair.</p>
+        <div class="highlight">
+          <strong>📢 Our Promise:</strong> We will never let the truth get in the way of a good story. But hey, you're smart — you know what's real.
+        </div>
+        <p>With a growing audience across India and the world, GODI MEDIA has become a household name for those who like their news with a side of satire.</p>
+      </div>
+      <div>
+        <div class="about-stats">
+          <div class="stat-card"><div class="number">50+</div><div class="label">Journalists</div></div>
+          <div class="stat-card"><div class="number">24/7</div><div class="label">News Coverage</div></div>
+          <div class="stat-card"><div class="number">10M+</div><div class="label">Monthly Viewers</div></div>
+          <div class="stat-card"><div class="number">#1</div><div class="label">In Creative Reporting</div></div>
+        </div>
+        <div style="margin-top: 24px; background: var(--black); color: white; padding: 20px 24px; border-radius: var(--radius-card); border-left: 6px solid var(--brand-orange);">
+          <p style="font-size: 1.1rem; font-weight: 600;">📍 Head Office:</p>
+          <p>GODI MEDIA Bhavan, Film City, Noida, Uttar Pradesh – 201301</p>
+          <p style="margin-top: 6px;">📞 +91-98765-43210 · ✉️ contact@godimedia.tv</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TEAM SECTION ===== -->
+  <div class="container team-section">
+    <h2>👥 Our Core Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="avatar">👨‍💼</div>
+        <h4>Rohit Sharma</h4>
+        <div class="role">Founder & Editor-in-Chief</div>
+        <p style="font-size:0.85rem; color:#555; margin-top:6px;">"We don't report news, we create it."</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">👩‍🎤</div>
+        <h4>Priya Singh</h4>
+        <div class="role">Managing Editor</div>
+        <p style="font-size:0.85rem; color:#555; margin-top:6px;">"Every story has two sides — we pick the third."</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">🧑‍💻</div>
+        <h4>Arjun Mehta</h4>
+        <div class="role">Head of Digital</div>
+        <p style="font-size:0.85rem; color:#555; margin-top:6px;">"Going viral is our only KPI."</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">👩‍💼</div>
+        <h4>Kavya Nair</h4>
+        <div class="role">Senior Anchor</div>
+        <p style="font-size:0.85rem; color:#555; margin-top:6px;">"Fake it till you make it — on live TV."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VALUES ===== -->
+  <div class="container values-section">
+    <h2>🌟 Our Core Values</h2>
+    <div class="values-grid">
+      <div class="value-item"><div class="icon">🔥</div><h4>Fearless</h4><p>We speak our mind, even if it's made up.</p></div>
+      <div class="value-item"><div class="icon">🎭</div><h4>Entertaining</h4><p>News that keeps you hooked.</p></div>
+      <div class="value-item"><div class="icon">⚡</div><h4>Fast</h4><p>First to report, even if it's wrong.</p></div>
+      <div class="value-item"><div class="icon">🧠</div><h4>Smart</h4><p>We know what you want to hear.</p></div>
+    </div>
+  </div>
+
+  <!-- ===== SOCIAL FOLLOW ===== -->
+  <div class="container social-follow" style="background: var(--black); padding: 28px 20px; border-radius: var(--radius-card); color: white; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 28px 0;">
+    <h3 style="color: var(--brand-orange);">📣 Follow GODI MEDIA</h3>
+    <div class="social-icons-big" style="display: flex; gap: 28px;">
+      <a href="#" style="color: white; font-size: 1.8rem; text-decoration: none;">📘</a>
+      <a href="#" style="color: white; font-size: 1.8rem; text-decoration: none;">🐦</a>
+      <a href="#" style="color: white; font-size: 1.8rem; text-decoration: none;">📸</a>
+      <a href="#" style="color: white; font-size: 1.8rem; text-decoration: none;">▶️</a>
+      <a href="#" style="color: white; font-size: 1.8rem; text-decoration: none;">📱</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>GODI MEDIA TV</h4>
+        <p style="max-width:220px;">हम केवल झूठ बोलेंगे – but you want the truth? Here is our address.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li><a href="Index.html">Home</a></li><li><a href="#">India</a></li><li><a href="#">Politics</a></li><li><a href="Contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul><li><a href="#">World</a></li><li><a href="#">Sports</a></li><li><a href="#">Technology</a></li><li><a href="Epaper.html">Epaper</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter your email" />
+          <br />
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 GODI MEDIA TV NEWS · All rights reserved (and some lies)
+    </div>
+  </footer>
+
+</body>
+</html>

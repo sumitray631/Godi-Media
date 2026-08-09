@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>GODI MEDIA TV NEWS</title>
+  <style>
+    /* ----- CSS Variables (brand colors) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    :root {
+      --brand-orange: #ff5a00;
+      --black: #080808;
+      --white: #ffffff;
+      --light-gray: #f2f2f2;
+      --gray-border: #e0e0e0;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --radius-card: 16px;
+      --transition: 0.25s ease;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ----- Top Utility Bar ----- */
+    .top-bar {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.8rem;
+      padding: 6px 0;
+      border-bottom: 2px solid var(--brand-orange);
+    }
+
+    .top-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar .date {
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+    }
+
+    .top-bar .links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-bar .links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+
+    .top-bar .links a:hover {
+      color: var(--brand-orange);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      color: var(--white);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ----- Header ----- */
+    .header-main {
+      background: var(--white);
+      padding: 18px 0 12px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .header-main .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .logo span {
+      color: var(--brand-orange);
+    }
+
+    .slogan {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brand-orange);
+      background: var(--black);
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 0 var(--brand-orange);
+    }
+
+    .slogan::after {
+      content: "✧";
+      font-size: 1.2rem;
+      margin-left: 4px;
+      color: var(--white);
+    }
+
+    .live-tv-btn {
+      background: var(--brand-orange);
+      color: var(--white);
+      font-weight: 700;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(255, 90, 0, 0.3);
+      transition: all var(--transition);
+      cursor: default;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-tv-btn::before {
+      content: "●";
+      color: var(--white);
+      font-size: 1rem;
+      animation: pulse-dot 1.4s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    /* ----- Navigation ----- */
+    .nav-bar {
+      background: var(--black);
+      padding: 0 0;
+      border-bottom: 2px solid var(--brand-orange);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 52px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      list-style: none;
+      padding: 6px 0;
+    }
+
+    .nav-links li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .nav-links li a:hover {
+      color: var(--brand-orange);
+      border-bottom-color: var(--brand-orange);
+    }
+
+    .search-icon {
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: default;
+      padding: 4px 8px;
+      transition: color var(--transition);
+    }
+
+    .search-icon:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ----- Breaking Ticker ----- */
+    .breaking-ticker {
+      background: var(--black);
+      color: var(--white);
+      padding: 8px 0;
+      border-bottom: 2px solid var(--brand-orange);
+      overflow: hidden;
+    }
+
+    .ticker-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .ticker-label {
+      background: var(--brand-orange);
+      padding: 0 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      line-height: 2;
+      white-space: nowrap;
+    }
+
+    .ticker-text {
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--light-gray);
+      font-size: 0.95rem;
+    }
+
+    /* ----- Hero Section ----- */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin: 28px 0;
+    }
+
+    .hero-main {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition);
+    }
+
+    .hero-main:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(145deg, #d4d4d4, #b0b0b0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400"><rect width="800" height="400" fill="%23eaeaea"/><text x="50" y="200" font-family="Arial" font-size="28" fill="%23555">🇮🇳 GODI MEDIA</text></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      padding: 18px 22px 22px;
+    }
+
+    .category-badge {
+      background: var(--brand-orange);
+      color: var(--white);
+      display: inline-block;
+      padding: 2px 16px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .hero-date {
+      color: #555;
+      font-size: 0.8rem;
+    }
+
+    /* side cards */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .side-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition);
+    }
+
+    .side-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .side-card .card-img {
+      height: 110px;
+      background: #d9d9d9;
+      background-image: linear-gradient(45deg, #c0c0c0, #e8e8e8);
+    }
+
+    .side-card .card-content {
+      padding: 12px 16px 16px;
+    }
+
+    .side-card .card-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .side-card .card-content .date {
+      font-size: 0.7rem;
+      color: #555;
+    }
+
+    /* ----- Two Column (Main + Sidebar) ----- */
+    .two-col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .latest-news-side {
+      background: var(--light-gray);
+      padding: 18px 20px;
+      border-radius: var(--radius-card);
+    }
+
+    .latest-news-side h3 {
+      font-size: 1.2rem;
+      border-bottom: 3px solid var(--brand-orange);
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .latest-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #d0d0d0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .latest-item:last-child {
+      border-bottom: none;
+    }
+
+    .latest-item .num {
+      background: var(--black);
+      color: var(--white);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .latest-item p {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* ----- Category Section ----- */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .cat-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm);
+      padding: 18px 16px;
+      text-align: center;
+      border-top: 4px solid var(--brand-orange);
+      transition: all var(--transition);
+    }
+
+    .cat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cat-card h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .cat-card p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    /* ----- Ad Banner ----- */
+    .ad-banner {
+      background: var(--black);
+      color: var(--white);
+      padding: 30px 20px;
+      border-radius: var(--radius-card);
+      text-align: center;
+      margin: 28px 0;
+      background-image: radial-gradient(circle at 10% 30%, #1f1f1f, #080808);
+      border: 1px solid var(--brand-orange);
+    }
+
+    .ad-banner span {
+      color: var(--brand-orange);
+      font-weight: 700;
+    }
+
+    /* ----- Video News ----- */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 22px;
+      margin: 30px 0;
+    }
+
+    .video-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .video-thumb {
+      background: #2b2b2b;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-image: linear-gradient(145deg, #333, #1a1a1a);
+    }
+
+    .play-btn {
+      background: var(--brand-orange);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(255, 90, 0, 0.4);
+    }
+
+    .video-card .v-content {
+      padding: 14px 16px;
+    }
+
+    .video-card .v-content h4 {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* ----- Social Follow ----- */
+    .social-follow {
+      background: var(--black);
+      padding: 28px 20px;
+      border-radius: var(--radius-card);
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 28px 0;
+    }
+
+    .social-follow h3 {
+      color: var(--brand-orange);
+    }
+
+    .social-icons-big {
+      display: flex;
+      gap: 28px;
+    }
+
+    .social-icons-big a {
+      color: white;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .social-icons-big a:hover {
+      color: var(--brand-orange);
+    }
+
+    /* ----- Footer ----- */
+    .footer {
+      background: var(--black);
+      color: #d0d0d0;
+      padding: 40px 0 20px;
+      margin-top: 20px;
+      border-top: 4px solid var(--brand-orange);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      border-left: 4px solid var(--brand-orange);
+      padding-left: 10px;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer ul li a:hover {
+      color: var(--brand-orange);
+    }
+
+    .newsletter input {
+      padding: 10px 14px;
+      border-radius: 40px;
+      border: none;
+      width: 100%;
+      max-width: 220px;
+      background: #222;
+      color: white;
+    }
+
+    .newsletter button {
+      background: var(--brand-orange);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #2a2a2a;
+      padding-top: 20px;
+      margin-top: 28px;
+      font-size: 0.8rem;
+    }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .header-main .container { flex-direction: column; align-items: center; }
+      .slogan { font-size: 0.95rem; padding: 4px 14px; }
+      .live-tv-btn { padding: 6px 16px; font-size: 0.8rem; }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar .container { flex-direction: column; gap: 4px; }
+      .nav-links { justify-content: center; gap: 8px 12px; }
+      .hero-title { font-size: 1.3rem; }
+      .social-follow { flex-direction: column; gap: 16px; align-items: center; }
+    }
+
+    .text-orange { color: var(--brand-orange); }
+    .fw-bold { font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP UTILITY BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="date">📆 August 9, 2026 · Saturday</span>
+      <div class="links">
+        <a href="AboutUs.html">About Us</a>
+        <a href="Contact.html">Contact</a>
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <div class="social-icons">
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+          <a href="#">▶️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header-main">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo">GODI <span>MEDIA</span> TV NEWS</div>
+      </div>
+      <div class="slogan">हम केवल झूठ बोलेंगे</div>
+      <div class="live-tv-btn">LIVE TV</div>
+    </div>
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav-bar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="#">India</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Entertainment</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="Epaper.html">Epaper</a></li>
+        <li><a href="#">Videos</a></li>
+      </ul>
+      <div class="search-icon">🔍</div>
+    </div>
+  </nav>
+
+  <!-- ===== BREAKING TICKER ===== -->
+  <div class="breaking-ticker">
+    <div class="container">
+      <div class="ticker-wrap">
+        <span class="ticker-label">BREAKING</span>
+        <span class="ticker-text">🚨 GODI MEDIA: Top stories today – new policy in India, major global shift</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <div class="container hero-grid">
+    <div class="hero-main">
+      <div class="hero-img"></div>
+      <div class="hero-content">
+        <span class="category-badge">Politics</span>
+        <h1 class="hero-title">GODI MEDIA Headlines: What is the truth?</h1>
+        <div class="hero-date">August 9, 2026 · 10 min ago</div>
+        <p style="margin-top:12px; color:#333;">The new face of media in India – amid major political upheaval, GODI MEDIA shows its strength.</p>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="side-card"><div class="card-img"></div><div class="card-content"><h4>Modi government's big decision</h4><span class="date">2 hours ago</span></div></div>
+      <div class="side-card"><div class="card-img"></div><div class="card-content"><h4>Cricket World Cup: India wins</h4><span class="date">4 hours ago</span></div></div>
+      <div class="side-card"><div class="card-img"></div><div class="card-content"><h4>New controversy in Bollywood</h4><span class="date">5 hours ago</span></div></div>
+    </div>
+  </div>
+
+  <!-- ===== TWO COLUMN: MAIN + SIDEBAR (Latest News) ===== -->
+  <div class="container two-col">
+    <div>
+      <h2 style="border-left:6px solid var(--brand-orange); padding-left:14px; margin-bottom:20px;">Top Stories</h2>
+      <div style="display:grid; gap:20px;">
+        <div style="background:var(--light-gray); padding:16px; border-radius:var(--radius-card);">
+          <span class="category-badge" style="background:#080808;">India</span>
+          <h3>GODI MEDIA: New initiative or old tactics?</h3>
+          <p>Major meeting in the capital today, several leaders raised questions.</p>
+        </div>
+        <div style="background:var(--light-gray); padding:16px; border-radius:var(--radius-card);">
+          <span class="category-badge" style="background:#080808;">World</span>
+          <h3>US-China relations take a new turn</h3>
+          <p>Deep impact on global politics, a special report by GODI MEDIA.</p>
+        </div>
+        <div style="background:var(--light-gray); padding:16px; border-radius:var(--radius-card);">
+          <span class="category-badge" style="background:#080808;">Sports</span>
+          <h3>IPL 2026: Finals clash</h3>
+          <p>Exciting match between Chennai and Mumbai this evening.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="latest-news-side">
+      <h3>🕒 Live Updates</h3>
+      <div class="latest-item"><span class="num">1</span><p>GODI MEDIA's new anchor at 8 PM tonight</p></div>
+      <div class="latest-item"><span class="num">2</span><p>Political crisis deepens in Maharashtra</p></div>
+      <div class="latest-item"><span class="num">3</span><p>Gold prices drop, check new rates</p></div>
+      <div class="latest-item"><span class="num">4</span><p>GODI MEDIA Awards 2026 announced</p></div>
+      <div class="latest-item"><span class="num">5</span><p>Rain expected in Delhi today</p></div>
+    </aside>
+  </div>
+
+  <!-- ===== CATEGORY SECTION ===== -->
+  <div class="container category-grid">
+    <div class="cat-card"><h4>🇮🇳 Politics</h4><p>Election statements, alliances, new policy</p></div>
+    <div class="cat-card"><h4>🇮🇳 India</h4><p>News from every corner of the country</p></div>
+    <div class="cat-card"><h4>🌍 World</h4><p>International affairs</p></div>
+    <div class="cat-card"><h4>🏏 Sports</h4><p>Cricket, football, Olympics</p></div>
+    <div class="cat-card"><h4>🎬 Entertainment</h4><p>Bollywood, Hollywood, series</p></div>
+  </div>
+
+  <!-- ===== AD BANNER ===== -->
+  <div class="container ad-banner">
+    <span>📢</span> GODI MEDIA – <span>हम केवल झूठ बोलेंगे</span> · Your trusted source?<br />
+    <span style="font-size:0.9rem;">(This is an advertisement banner)</span>
+  </div>
+
+  <!-- ===== VIDEO NEWS ===== -->
+  <div class="container">
+    <h2 style="border-left:6px solid var(--brand-orange); padding-left:14px; margin: 16px 0 12px;">📹 Video News</h2>
+    <div class="video-grid">
+      <div class="video-card"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="v-content"><h4>GODI MEDIA Special</h4><span>10k views</span></div></div>
+      <div class="video-card"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="v-content"><h4>Interview: Chief Minister</h4><span>8k views</span></div></div>
+      <div class="video-card"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="v-content"><h4>Breaking: Flash News</h4><span>15k views</span></div></div>
+      <div class="video-card"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="v-content"><h4>Sports Highlights</h4><span>22k views</span></div></div>
+    </div>
+  </div>
+
+  <!-- ===== SOCIAL FOLLOW ===== -->
+  <div class="container social-follow">
+    <h3>📣 Follow GODI MEDIA</h3>
+    <div class="social-icons-big">
+      <a href="#">📘</a>
+      <a href="#">🐦</a>
+      <a href="#">📸</a>
+      <a href="#">▶️</a>
+      <a href="#">📱</a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>GODI MEDIA TV</h4>
+        <p style="max-width:220px;">हम केवल झूठ बोलेंगे – but you want the truth? Here is our address.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li><a href="Index.html">Home</a></li><li><a href="#">India</a></li><li><a href="#">Politics</a></li><li><a href="Contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul><li><a href="#">World</a></li><li><a href="#">Sports</a></li><li><a href="#">Technology</a></li><li><a href="Epaper.html">Epaper</a></li></ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter your email" />
+          <br />
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 GODI MEDIA TV NEWS · All rights reserved (and some lies)
+    </div>
+  </footer>
+
+</body>
+</html>
